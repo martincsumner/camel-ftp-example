@@ -42,7 +42,7 @@ oc set env dc/camel-sftp-example SPRING_CONFIG_LOCATION=/etc/config/application.
 
 oc create secret generic dbcredentials --from-literal=username=DBUSER  --from-literal=password=DBPASSWORD
 
-oc set volume dc/camel-ftp-example --add --mount-path=/etc/ssh/ --secret-name=dbcredentials
+oc set volume dc/camel-ftp-example --add --mount-path=/etc/database/ --secret-name=dbcredentials
 
 
 
