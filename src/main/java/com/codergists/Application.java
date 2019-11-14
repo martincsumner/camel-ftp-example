@@ -31,15 +31,15 @@ public class Application extends RouteBuilder {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
+    
     @Override
     public void configure() throws Exception {
         from("timer://foo?period=5000")
             .setBody().constant("I am running!!!")
-            .log(">>> ${body}");
+            .log("my database credentials are: {{dbcredentials.DBUSER}}" );
 
-//        from("sftp://foo@0.0.0.0:22222?password=123&passiveMode=true&disconnect=true&binary=true").to("log:hello");
+//     from("sftp://foo@0.0.0.0:22222?password=123&passiveMode=true&disconnect=true&binary=true").to("log:hello");
 
-       from("timer://foo?period=5000").setBody().constant("Hello World").to("sftp://{{sftp.address}}?preferredAuthentications=publickey&username={{sftp.username}}&password={{sftp.password}}&privateKeyFile={{sftp.privatekey}}&passiveMode=true&disconnect=true&binary=true&useUserKnownHostsFile=false").to("log:hello");
+      //uncomment for FTP example. from("timer://foo?period=5000").setBody().constant("Hello World").to("sftp://{{sftp.address}}?preferredAuthentications=publickey&username={{sftp.username}}&password={{sftp.password}}&privateKeyFile={{sftp.privatekey}}&passiveMode=true&disconnect=true&binary=true&useUserKnownHostsFile=false").to("log:hello");
     }
 }
