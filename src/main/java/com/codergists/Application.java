@@ -36,7 +36,7 @@ public class Application extends RouteBuilder {
     public void configure() throws Exception {
         from("timer://foo?period=5000")
             .setBody().constant("I am running!!!")
-            .log("my new database credentials are: {{username}}" );
+            .log("my new database credentials are: {{USERNAME}}" );
 
 //     from("sftp://foo@0.0.0.0:22222?password=123&passiveMode=true&disconnect=true&binary=true").to("log:hello");
 
